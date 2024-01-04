@@ -1,6 +1,6 @@
 {
     "name": "kanopi/saplings_custom",
-    "description": "Simple base configuration for modern Drupal.",
+    "description": "Custom functionality for the Saplings site starter.",
     "type": "drupal-recipe",
     "license": "GPL-2.0-or-later",
     "authors": [
