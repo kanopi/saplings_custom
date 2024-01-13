@@ -1,7 +1,7 @@
 {
     "name": "kanopi/saplings_custom",
     "description": "Custom functionality for the Saplings site starter.",
-    "type": "drupal-recipe",
+    "type": "drupal-module",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
