@@ -14,7 +14,7 @@ function saplings_custom_preprocess_html(array &$variables) {
   // Load the node entity from current route.
   $node = \Drupal::routeMatch()->getParameter('node');
   // Get the value of the field.
-  if ($node) {
+  if ($node->hasField('sa_robots')) {
     $robots_field = $node->get('sa_robots')->getString();
   }
   // Only render if the field has value.
