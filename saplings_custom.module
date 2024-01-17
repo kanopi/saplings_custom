@@ -13,23 +13,23 @@
 function saplings_custom_preprocess_html(array &$variables) {
   // Load the node entity from current route.
   $node = \Drupal::routeMatch()->getParameter('node');
-  if ($node){
+  if ($node instanceof NodeInterface){
   // Get the value of the field.
-  if ($node->hasField('sa_robots')) {
-    $robots_field = $node->get('sa_robots')->getString();
-  }
-  // Only render if the field has value.
-  if ($robots_field) {
-    $variables['page']['#attached']['html_head'][] = [
-      [
-        '#tag' => 'meta',
-        '#attributes' => [
-          'name' => 'robots',
-          'content' => $robots_field,
+    if ($node->hasField('sa_robots')) {
+      $robots_field = $node->get('sa_robots')->getString();
+    }
+    // Only render if the field has value.
+    if ($robots_field) {
+      $variables['page']['#attached']['html_head'][] = [
+        [
+          '#tag' => 'meta',
+          '#attributes' => [
+            'name' => 'robots',
+            'content' => $robots_field,
+          ],
         ],
-      ],
-      'robots',
-    ];
-  }
+        'robots',
+      ];
+    }
   }
 }
