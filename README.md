@@ -2,7 +2,9 @@
 
 ## Overview
 
-Welcome to the Saplings Custom Module repository! This repository contains a contributed module with utility commands for extending the functionality of the Saplings application.
+Welcome to the Saplings Custom Module repository! This repository contains a
+contributed module with utility commands for extending the functionality of the
+Saplings application.
 
 ## Features
 
