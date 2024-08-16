@@ -6,6 +6,7 @@
  */
 
 use Drupal\node\NodeInterface;
+use Drupal\ui_skins\HookHandler\PageTop;
 
 /**
  * Implements hook_preprocess_html() for html templates.
@@ -33,5 +34,18 @@ function saplings_custom_preprocess_html(array &$variables) {
         ];
       }
     }
+  }
+}
+
+/**
+ * Implements hook_page_top().
+ */
+function saplings_custom_page_top(array &$page_top): void {
+  if (\Drupal::service('router.admin_context')->isAdminRoute()) {
+    $default_theme = \Drupal::config('system.theme')->get('default');
+    // /** @var \Drupal\ui_skins\HookHandler\PageTop $instance */
+    $instance = \Drupal::service('class_resolver')
+      ->getInstanceFromDefinition(PageTop::class);
+    $instance->alter($page_top, $default_theme);
   }
 }
