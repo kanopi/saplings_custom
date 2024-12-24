@@ -2,4 +2,4 @@ name: 'Saplings Custom Functionality'
 type: module
 description: 'Custom functionality for the Saplings site starter.'
 package: Saplings
-core_version_requirement: ^10
+core_version_requirement: ^10 || ^11
