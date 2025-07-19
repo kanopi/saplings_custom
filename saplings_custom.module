@@ -35,3 +35,33 @@ function saplings_custom_preprocess_html(array &$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_page_attachments().
+ */
+function saplings_custom_page_attachments(array &$attachments) {
+  // Remove environment_indicator_ribbon library and settings from the frontend
+  // editing form to avoid overlapping.
+  $module_handler = \Drupal::moduleHandler();
+  if (!$module_handler->moduleExists('environment_indicator_ribbon')) {
+    return;
+  }
+
+  $route_match = \Drupal::routeMatch();
+  $route_name = $route_match->getRouteName();
+  if ($route_name !== 'frontend_editing.form') {
+    return;
+  }
+
+  $attached = &$attachments['#attached'];
+
+  // Unattach library and settings as added by the environment_indicator_ribbon
+  // module. @see environment_indicator_ribbon_page_attachments().
+  unset($attached['drupalSettings']['environment_indicator_ribbon']);
+  if (isset($attached['library'])) {
+    $attached['library'] = array_diff(
+      $attached['library'],
+      ['environment_indicator_ribbon/environment_indicator_ribbon']
+    );
+  }
+}
